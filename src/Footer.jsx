@@ -2,6 +2,7 @@ import React from 'react'
 import { FaInstagram } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -11,8 +12,12 @@ const Footer = () => {
       <h1 className='text-white mb-8 tracking-wide text-1xl sm:text-4xl font-extrabold'>KASHMIRI HERITAGE</h1>
       <div className='text-white py-10 flex flex-row justify-center gap-11 sm:gap-32'>
         <ul className='space-y-2 text-justify'>
+          <Link to="/">
           <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>Home</li>
-          <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>About</li>
+          </Link>
+          <Link to="/about">
+          <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>About Us</li>
+          </Link>
           <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>Blog</li>
         </ul>
         <ul className='space-y-2 text-justify'>
