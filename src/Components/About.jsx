@@ -35,12 +35,13 @@ const aboutUsArray = [
 
 const About = () => {
     return (
-        <section className='mt-9 py-10 mb-20'>
-            <div className="carousel-container w-full h-[600px] px-2 ">
+        <section className='mt-2 py-10 mb-20'>
+            <div className="carousel-container w-full h-[900px] px-2 ">
                 <Carousel>
                     {carouselData.map((item) => (
-                        <div key={item.id} className='w-[1500px] h-[700px] '>
-                            <img src={item.pic} alt={`Carousel image ${item.id}`} className=' w-[1500px] h-[700px]' />
+                        <div key={item.id} className='w-full h-[900px]'>
+                            <div className="absolute inset-0 bg-black/40"></div>
+                            <img src={item.pic} alt={`Carousel image ${item.id}`} className='w-auto sm:w-full h-[900px]' />
                         </div>
                     ))}
                 </Carousel>
