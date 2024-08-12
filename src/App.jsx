@@ -2,8 +2,9 @@ import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import BlogsSection from "./Components/BlogsSection";
 import Blog from "./Components/Blog";
-import Footer from "./Footer";
+import Footer from "./Components/Footer";
 import About from "./Components/About";
+import BottomSection from "./Components/BottomSection";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
         <Route path="/" element={
           <>
             <Hero />
-            <Blog /> 
+            <Blog />
+            <BottomSection/> 
           </>
         } />
         <Route path="/blogs" element={<BlogsSection />} />

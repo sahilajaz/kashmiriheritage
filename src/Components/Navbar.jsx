@@ -23,7 +23,7 @@ const Navbar = () => {
           <li className='hover:text-blue-400'>FAQ</li>
           <Link to="/about"><li className='hover:text-blue-400'>About Us</li></Link>
           <li className='hover:text-blue-400'>Contact</li>
-          <li className='hover:text-blue-400'>Privacy Policy</li>
+          <li className='hover:text-blue-400'>Podcast</li>
         </ul>
         {
           isMenuOpen ? <MdOutlineClose className='flex md:hidden text-black' size={35} onClick={toggleMenu}/> : <IoMenuOutline className='flex md:hidden text-black' size={35} onClick={toggleMenu} />
@@ -38,7 +38,7 @@ const Navbar = () => {
           <li className='w-full h-full text-center py-1  hover:text-blue-400'>About Us</li>
           </Link>
           <li className='w-full h-full text-center py-1 border-b border-gray-500 hover:text-blue-400'>Contact</li>
-          <li className='w-full h-full text-center py-1 hover:text-blue-400'>Privacy Policy</li>
+          <li className='w-full h-full text-center py-1 hover:text-blue-400'>Podcast</li>
         </ul>
       )}
     </nav>

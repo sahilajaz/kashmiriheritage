@@ -23,12 +23,20 @@ const Footer = () => {
         <ul className='space-y-2 text-justify'>
           <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>Videos</li>
           <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>Contact Us</li>
-          <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>FAQ's</li>
+          <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>
+            <a href="https://x.com/HeritageIs50684?t=YTTC1ouf1sL0sDfQuar48Q&s=09" target='blank'>Twitter</a>
+          </li>
         </ul>
         <ul className='flex flex-col justify-center gap-4 text-justify'>
-          <li className='cursor-pointer hover:scale-125 font-bold'><FaInstagram className='text-sm sm:text-2xl'/></li>
-          <li className='cursor-pointer hover:scale-125 font-bold'><FaFacebook className='text-sm sm:text-2xl'/></li>
-          <li className='cursor-pointer hover:scale-125 font-bold'><FaYoutube className='text-sm sm:text-2xl'/></li>
+          <li className='cursor-pointer hover:scale-125 font-bold'>
+            <a href="http://www.instagram.com/kashmiri_islamic_heritage_" target='blank'><FaInstagram className='text-sm sm:text-2xl'/></a>
+          </li>
+          <li className='cursor-pointer hover:scale-125 font-bold'>
+            <a href="https://www.facebook.com/profile.php?id=61555199787522&mibextid=ZbWKwL" target='blank'><FaFacebook className='text-sm sm:text-2xl'/></a>
+          </li>
+          <li className='cursor-pointer hover:scale-125 font-bold'>
+            <a href="https://m.youtube.com/@kashmiriislamicheritage" target='blank'><FaYoutube className='text-sm sm:text-2xl'/></a>
+          </li>
         </ul>
       </div>
     </div>
