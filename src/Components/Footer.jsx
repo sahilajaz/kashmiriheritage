@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <section className="bg-black mt-9  w-auto sm:w-full flex flex-col items-center bg-[url('/footpic.jpg')] relative">
+    <section className="bg-black mt-9  w-auto sm:w-full flex flex-col items-center bg-[url('footpic.jpg')] relative">
     <div className="absolute inset-0 bg-black/20"></div>
     <div className='footer-container py-10 text-center mt-20 relative'>
       <h1 className='text-white mb-8 tracking-wide text-1xl sm:text-4xl font-extrabold'>KASHMIRI HERITAGE</h1>
