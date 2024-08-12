@@ -21,7 +21,7 @@ const Navbar = () => {
           <Link to="/blog"><li className='hover:text-blue-400'>Blog</li></Link>
           <li className='hover:text-blue-400'>Videos</li>
           <li className='hover:text-blue-400'>FAQ</li>
-          <li className='hover:text-blue-400'>About</li>
+          <li className='hover:text-blue-400'>About Us</li>
           <li className='hover:text-blue-400'>Contact</li>
           <li className='hover:text-blue-400'>Privacy Policy</li>
         </ul>
@@ -34,7 +34,7 @@ const Navbar = () => {
           <li className='w-full h-full text-center py-1 border-b border-gray-500 hover:text-blue-400'>Blog</li>
           <li className='w-full h-full text-center py-1 border-b border-gray-500 hover:text-blue-400'>Videos</li>
           <li className='w-full h-full text-center py-1 border-b border-gray-500 hover:text-blue-400'>FAQ</li>
-          <li className='w-full h-full text-center py-1 border-b border-gray-500 hover:text-blue-400'>About</li>
+          <li className='w-full h-full text-center py-1 border-b border-gray-500 hover:text-blue-400'>About Us</li>
           <li className='w-full h-full text-center py-1 border-b border-gray-500 hover:text-blue-400'>Contact</li>
           <li className='w-full h-full text-center py-1 hover:text-blue-400'>Privacy Policy</li>
         </ul>
