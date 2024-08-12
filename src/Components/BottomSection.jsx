@@ -32,7 +32,7 @@ const BottomSection = () => {
     <div className="card-container mt-6 mb-16 px-4 lg:px-16">
         {
             dataArr.map((item, index) => (
-                <div className="card flex flex-col gap-5 px-4 py-4 border shadow-lg cursor-pointer hover:translate-x-11 transition-transform md:flex-row md:px-9 md:py-4" key={index}>
+                <div className="card flex flex-col gap-5 px-4 py-4 border shadow-lg cursor-pointer hover:none sm:hover:translate-x-11 transition-transform md:flex-row md:px-9 md:py-4" key={index}>
                     <img src={`${item.pic}`} className='w-full h-72 object-cover' />
                     <div className='card-body'>
                         <h1 className='text-xl md:text-2xl mb-4 font-bold ms-0 md:ms-20'>{item.title}</h1>
