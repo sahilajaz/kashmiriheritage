@@ -7,6 +7,18 @@ const blogArray = [
     pic: "/blogpic.jpg",
     title: "Unveiling the Rich Tapestry of Kashmiri Islamic Heritage",
     para: "Explore the intricate tapestry of Kashmiri Islamic heritage, delving into its deep historical roots, spiritual teachings, and vibrant cultural practices. Our blog offers an insightful journey through the rich traditions that have shaped Kashmiri society over the centuries, providing readers with a comprehensive understanding of the region's unique contributions to Islamic culture. Discover how these traditions continue to influence contemporary issues and inspire a sense of identity and community among Kashmiris today."
+  },
+  {
+    id: "1",
+    pic: "/blogpic.jpg",
+    title: "Unveiling the Rich Tapestry of Kashmiri Islamic Heritage",
+    para: "Explore the intricate tapestry of Kashmiri Islamic heritage, delving into its deep historical roots, spiritual teachings, and vibrant cultural practices. Our blog offers an insightful journey through the rich traditions that have shaped Kashmiri society over the centuries, providing readers with a comprehensive understanding of the region's unique contributions to Islamic culture. Discover how these traditions continue to influence contemporary issues and inspire a sense of identity and community among Kashmiris today."
+  },
+  {
+    id: "1",
+    pic: "/blogpic.jpg",
+    title: "Unveiling the Rich Tapestry of Kashmiri Islamic Heritage",
+    para: "Explore the intricate tapestry of Kashmiri Islamic heritage, delving into its deep historical roots, spiritual teachings, and vibrant cultural practices. Our blog offers an insightful journey through the rich traditions that have shaped Kashmiri society over the centuries, providing readers with a comprehensive understanding of the region's unique contributions to Islamic culture. Discover how these traditions continue to influence contemporary issues and inspire a sense of identity and community among Kashmiris today."
   }
   
    ];

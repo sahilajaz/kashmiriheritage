@@ -11,7 +11,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className='bg-white font-sans fixed left-0 right-0 z-50 shadow-2xl'>
+    <nav className='bg-white font-sans fixed top-0 left-0 right-0 z-50 shadow-2xl'>
       <div className='flex justify-between items-center py-3 px-2'>
       <div className='flex items-center'>
        <Link to="/"><img src='/1.jpg' alt='logo' className='border rounded-3xl' width={60} /></Link>
@@ -21,7 +21,7 @@ const Navbar = () => {
           <Link to="/blog"><li className='hover:text-blue-400'>Blog</li></Link>
           <li className='hover:text-blue-400'>Videos</li>
           <li className='hover:text-blue-400'>FAQ</li>
-          <li className='hover:text-blue-400'>About Us</li>
+          <Link to="/about"><li className='hover:text-blue-400'>About Us</li></Link>
           <li className='hover:text-blue-400'>Contact</li>
           <li className='hover:text-blue-400'>Privacy Policy</li>
         </ul>

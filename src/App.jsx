@@ -3,6 +3,7 @@ import Hero from "./Components/Hero";
 import BlogsSection from "./Components/BlogsSection";
 import Blog from "./Components/Blog";
 import Footer from "./Footer";
+import About from "./Components/About";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           </>
         } />
         <Route path="/blogs" element={<BlogsSection />} />
+        <Route path="/about" element={<About/>}/>
       </Routes>
       <Footer/>
     </main>
