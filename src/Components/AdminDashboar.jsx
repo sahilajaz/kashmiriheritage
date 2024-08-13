@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { collection, addDoc } from "firebase/firestore"; 
+import { db, storage } from '../firebase';
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('blogs');
@@ -7,9 +10,7 @@ const AdminDashboard = () => {
     body: '',
     photo: ''
   });
- 
 
-  
   const handleChange = (event) => {
     const { id, value } = event.target;
     updateBlogdata(prevState => ({
@@ -18,37 +19,49 @@ const AdminDashboard = () => {
     }));
   };
 
-  const handlePhotoChange = (event) => {
+  const handlePhotoChange = async (event) => {
     const file = event.target.files[0];
-    updateBlogdata(prevState => ({
-      ...prevState,
-      photo: file ? URL.createObjectURL(file) : ''
-    }));
+    if (file) {
+      const name = new Date().getTime() + file.name;
+      const storageRef = ref(storage, name);
+      try {
+        const snapshot = await uploadBytes(storageRef, file);
+        const downloadURL = await getDownloadURL(snapshot.ref);
+        updateBlogdata(prevState => ({
+          ...prevState,
+          photo: downloadURL
+        }));
+      } catch (error) {
+        console.error("Upload failed", error);
+      }
+    }
   };
 
-  
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    
+
     const newBlog = {
-      ...blogadata,
+      title: blogadata.title,
+      body: blogadata.body,
       photo: blogadata.photo
     };
 
+    try {
+      await addDoc(collection(db, "blogs"), newBlog);
+      console.log("Blog added successfully");
 
-
-    updateBlogdata({
-      title: '',
-      body: '',
-      photo: ''
-    });
+      updateBlogdata({
+        title: '',
+        body: '',
+        photo: ''
+      });
+    } catch (error) {
+      console.error("Error adding blog", error);
+    }
   };
 
-  
-
   return (
-    <section className='p-6 mt-32'>
+    <section className='p-6 mt-32 py-8'>
       <div className='container mx-auto'>
         <h2 className='text-3xl font-bold mb-4 text-center'>Admin Dashboard</h2>
         <nav className='mb-6'>
