@@ -7,7 +7,7 @@ const AdminDashboard = () => {
     body: '',
     photo: ''
   });
-  const [blogs, setBlogs] = useState([]);
+ 
 
   
   const handleChange = (event) => {
@@ -36,8 +36,6 @@ const AdminDashboard = () => {
       photo: blogadata.photo
     };
 
-    
-    setBlogs([...blogs, newBlog]);
 
 
     updateBlogdata({
@@ -48,7 +46,6 @@ const AdminDashboard = () => {
   };
 
   
-
 
   return (
     <section className='p-6 mt-32'>
@@ -76,7 +73,7 @@ const AdminDashboard = () => {
         </nav>
 
         {activeTab === 'blogs' && (
-          <div className='max-w-4xl mx-auto bg-white p-6 rounded shadow-md'>
+          <div className='max-w-4xl mx-auto bg-white p-6 border rounded shadow-md'>
             <h3 className='text-2xl font-semibold mb-4'>Add New Blog</h3>
             <form onSubmit={handleSubmit} className='space-y-4'>
               <div>
@@ -129,7 +126,7 @@ const AdminDashboard = () => {
         )}
 
         {activeTab === 'faqs' && (
-          <div className='max-w-4xl mx-auto bg-white p-6 rounded shadow-md'>
+          <div className='max-w-4xl mx-auto bg-white p-6 border rounded shadow-md'>
             <h3 className='text-2xl font-semibold mb-4'>Manage FAQs</h3>
             <p>This section is for managing FAQs. You can add, edit, or delete FAQs here.</p>
           </div>

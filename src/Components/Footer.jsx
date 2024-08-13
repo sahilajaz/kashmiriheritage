@@ -11,14 +11,14 @@ const Footer = () => {
     <div className='footer-container py-10 text-center mt-20 relative'>
       <h1 className='text-white mb-8 tracking-wide text-1xl sm:text-4xl font-extrabold'>KASHMIRI HERITAGE</h1>
       <div className='text-white py-10 flex flex-row justify-center gap-11 sm:gap-32'>
-        <ul className='space-y-2 text-justify'>
+        <ul className='space-y-2 text-justify '>
           <Link to="/">
-          <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>Home</li>
+          <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold mb-2'>Home</li>
           </Link>
           <Link to="/about">
-          <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>About Us</li>
+          <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold mb-2'>About Us</li>
           </Link>
-          <Link to="/admin">
+          <Link to="/login">
           <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>Admin</li>
           </Link>
         </ul>

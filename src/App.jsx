@@ -7,6 +7,7 @@ import About from "./Components/About";
 import BottomSection from "./Components/BottomSection";
 import { Route, Routes } from "react-router-dom";
 import AdminDashboard from "./Components/AdminDashboar";
+import Login from "./Components/Login";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/blogs" element={<BlogsSection />} />
         <Route path="/about" element={<About/>}/>
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/login" element={<Login/>}/>
       </Routes>
       <Footer/>
     </main>
