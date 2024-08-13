@@ -6,7 +6,7 @@ const Hero = () => {
         <div className="bg-[url('/1.jpg')] bg-center bg-cover flex justify-center items-center sm:h-[660px] relative top-[64px]">
           <div className="absolute inset-0 bg-black/55 z-10"></div>
           <div className="relative text-center z-20 px-6 md:px-12 lg:px-24">
-            <h1 className='text-white text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 md:mb-6 leading-tight drop-shadow-lg'>
+            <h1 className='text-white text-3xl md:text-4xl lg:text-5xl mt-3 font-semibold mb-4 md:mb-6 leading-tight drop-shadow-lg'>
               Welcome to Kashmiri Heritage
             </h1>
             <p className='text-white mx-auto max-w-3xl text-justify leading-8 drop-shadow-md'>

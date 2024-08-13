@@ -18,7 +18,9 @@ const Footer = () => {
           <Link to="/about">
           <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>About Us</li>
           </Link>
-          <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>Blog</li>
+          <Link to="/admin">
+          <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>Admin</li>
+          </Link>
         </ul>
         <ul className='space-y-2 text-justify'>
           <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>Videos</li>

@@ -6,6 +6,7 @@ import Footer from "./Components/Footer";
 import About from "./Components/About";
 import BottomSection from "./Components/BottomSection";
 import { Route, Routes } from "react-router-dom";
+import AdminDashboard from "./Components/AdminDashboar";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         } />
         <Route path="/blogs" element={<BlogsSection />} />
         <Route path="/about" element={<About/>}/>
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
       <Footer/>
     </main>
