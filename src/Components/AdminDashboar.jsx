@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { collection, addDoc } from "firebase/firestore"; 
+import React, { useState , useEffect} from 'react';
+import { collection, addDoc ,  getDocs} from "firebase/firestore"; 
 import { db, storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('blogs');
@@ -10,6 +11,21 @@ const AdminDashboard = () => {
     body: '',
     photo: ''
   });
+ const[blogs , setBlogs] = useState([])
+
+  useEffect(() => {
+    const getAllblogs = async () => {
+      const querySnapshot = await getDocs(collection(db, "blogs"));
+      const fetchedBlogs = []
+      querySnapshot.forEach((doc) => {
+        fetchedBlogs.push({ id: doc.id, ...doc.data() })
+        // console.log(doc.id, " => ", doc.data());
+      })
+      setBlogs(fetchedBlogs)
+    }
+    getAllblogs()
+  } , [])
+
 
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -48,8 +64,7 @@ const AdminDashboard = () => {
 
     try {
       await addDoc(collection(db, "blogs"), newBlog);
-      console.log("Blog added successfully");
-
+  
       updateBlogdata({
         title: '',
         body: '',
@@ -137,6 +152,7 @@ const AdminDashboard = () => {
             </form>
           </div>
         )}
+      
 
         {activeTab === 'faqs' && (
           <div className='max-w-4xl mx-auto bg-white p-6 border rounded shadow-md'>
@@ -145,6 +161,25 @@ const AdminDashboard = () => {
           </div>
         )}
       </div>
+      <div className='mt-10 py-10 flex flex-col justify-center items-center w-full'>
+     {activeTab === 'blogs' ? <h1 className='text-3xl font-extrabold mb-6'>Blogs</h1> : <h1>FAQ's</h1>}
+      {
+      activeTab === 'blogs' ? (
+      <div className="container-content w-full flex flex-col items-center">
+      {blogs.map((item, index) => (
+      <div className="container flex items-center gap-4 w-full max-w-md border-b py-3 border-gray-300 border shadow-lg" key={index}>
+      <img src={`${item.photo}`} className='h-[80px] w-[80px] object-cover rounded-md ms-4' alt={item.title} />
+      <div className='flex-1 flex justify-between items-center px-2'>
+        <h2 className='text-lg font-semibold ms-5'>{item.title}</h2>
+        <button className='bg-red-500 text-white px-4 py-1 text-sm border rounded-md hover:bg-red-700 transition-colors'>Delete</button>
+      </div>
+    </div>
+      ))}
+     </div>
+     )
+     : ""    
+    }
+   </div>
     </section>
   );
 };
