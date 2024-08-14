@@ -41,7 +41,7 @@ const About = () => {
                     {carouselData.map((item) => (
                         <div key={item.id} className='w-full h-[60vh] sm:h-[900px]'>
                             <div className="absolute inset-0 bg-black/30"></div>
-                            <img src={item.pic} alt={`Carousel image ${item.id}`} className='w-[100vh] sm:w-full h-[60vh] sm:h-[900px] mt-9 sm:mt-0' />
+                            <img src={item.pic} alt={`Carousel image ${item.id}`} className='w-[1000vh] sm:w-full h-[60vh] sm:h-[900px] mt-9 sm:mt-0' />
                         </div>
                     ))}
                 </Carousel>
