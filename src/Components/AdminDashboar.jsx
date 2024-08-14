@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, onSnapshot, doc, deleteDoc } from "firebase/firestore"; 
+import { collection, addDoc, onSnapshot, doc, deleteDoc , getDoc} from "firebase/firestore"; 
 import { db, storage } from '../firebase';
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL , deleteObject } from "firebase/storage";
 import ManageVideo from './ManageVideo';
 
 const AdminDashboard = () => {
@@ -77,14 +77,27 @@ const AdminDashboard = () => {
     }
   };
 
+
   const deleteById = async (id, type) => {
     try {
-      const ref = doc(db, type === 'blog' ? 'blogs' : 'videos', id);
-      await deleteDoc(ref);
+      const docRef = doc(db, type === 'blog' ? 'blogs' : 'videos', id);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const docData = docSnap.data();
+        const photoURL = docData.photo;
+  
+        if (photoURL) {
+          const photoRef = ref(storage, photoURL);
+          await deleteObject(photoRef);
+        }
+      }
+      await deleteDoc(docRef);
     } catch (error) {
-      console.error("Error deleting document", error);
+      console.error("Error deleting document or photo", error);
     }
   };
+  
+  
 
   return (
     <section className='p-6 mt-32 py-8'>
@@ -178,8 +191,8 @@ const AdminDashboard = () => {
             {blogs.map((item, index) => (
               <div className="container flex items-center gap-4 w-full max-w-md border-b py-3 border-gray-300 border shadow-lg mb-7" key={index}>
                 <img src={item.photo} className='h-[80px] w-[80px] object-cover rounded-md ms-6 py-1' alt={item.title} />
-                <div className='flex-1 flex justify-between items-center px-5 py-1'>
-                  <h2 className='text-lg font-semibold ms-5'>{item.title}</h2>
+                <div className='flex-1 flex justify-between items-center px-5 py-1 gap-10'>
+                  <h2 className='text-sm font-semibold ms-5'>{item.title}</h2>
                   <button className='bg-red-500 text-white px-4 py-1 text-sm border rounded-md hover:bg-red-700 transition-colors' onClick={() => deleteById(item.id, 'blog')}>Delete</button>
                 </div>
               </div>
@@ -191,7 +204,7 @@ const AdminDashboard = () => {
               <div className="container flex items-center gap-4 w-full max-w-md border-b py-3 border-gray-300 border shadow-lg mb-7" key={index}>
                 <img src={item.photo} className='h-[80px] w-[80px] object-cover rounded-md ms-6 py-1' alt={item.title} />
                 <div className='flex-1 flex justify-between items-center px-5 py-1'>
-                  <h2 className='text-lg font-semibold ms-5'>{item.title}</h2>
+                  <h2 className='text-sm font-semibold ms-5 gap-10'>{item.title}</h2>
                   <button className='bg-red-500 text-white px-4 py-1 text-sm border rounded-md hover:bg-red-700 transition-colors' onClick={() => deleteById(item.id, 'video')}>Delete</button>
                 </div>
               </div>

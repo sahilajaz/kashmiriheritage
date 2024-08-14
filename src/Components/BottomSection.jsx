@@ -38,7 +38,7 @@ const BottomSection = () => {
                         <h1 className='text-xl md:text-2xl mb-4 font-bold ms-0 md:ms-20'>{item.title}</h1>
                         <p className='px-2 sm:px-4 md:px-20 font-ubuntu text-justify leading-5 md:leading-9'>{item.para}</p>
                         <Link to={`${item.links}`}>
-                            <button className='bg-black w-full sm:w-auto ms-0 md:ms-20 text-white px-3 py-1 rounded-md font-bold text-xl mt-4 hover:scale-110 transition-transform'>Read more</button>
+                            <button className='bg-black w-full sm:w-auto ms-0 md:ms-20 text-white px-3 py-1 rounded-md font-bold text-xl mt-4 hover:scale-110 transition-transform'>Learn more</button>
                         </Link>
                     </div>
                 </div>
