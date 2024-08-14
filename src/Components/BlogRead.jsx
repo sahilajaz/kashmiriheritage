@@ -36,14 +36,14 @@ const BlogRead = () => {
       post.map((postItem, index) => (
         <div key={index} className=''>
           <h1 className='text-sm sm:text-3xl font-extrabold text-center mb-10 sm:underline'>{postItem.data.title}</h1>
-          <div className='w-full h-[800px] flex justify-center mb-10'>
+          <div className='w-full mb-3 sm:h-[800px] flex justify-center sm:mb-10'>
           <img 
             src={postItem.data.photo} 
             alt="Blog Post" 
-            className='h-[800px] w-[800px]'
+            className='h-[60vh] sm:h-[800px] w-[800px]'
           />
           </div>
-          <p className='px-20 text-justify font-ubuntu leading-6 sm:leading-9  sm:tracking-wide'>{postItem.data.body}</p>
+          <p className='px-4 sm:px-20 text-justify font-ubuntu leading-6 sm:leading-9  sm:tracking-wide'>{postItem.data.body}</p>
         </div>
       ))
     ) : (

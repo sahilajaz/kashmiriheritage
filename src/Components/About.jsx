@@ -39,14 +39,14 @@ const About = () => {
             <div className="carousel-container w-full h-[900px]">
                 <Carousel>
                     {carouselData.map((item) => (
-                        <div key={item.id} className='w-auto sm:w-full sm:h-[900px]'>
+                        <div key={item.id} className='w-full h-[60vh] sm:h-[900px]'>
                             <div className="absolute inset-0 bg-black/30"></div>
-                            <img src={item.pic} alt={`Carousel image ${item.id}`} className='w-auto sm:w-full h-[900px]' />
+                            <img src={item.pic} alt={`Carousel image ${item.id}`} className='w-[100vh] sm:w-full h-[60vh] sm:h-[900px] mt-9 sm:mt-0' />
                         </div>
                     ))}
                 </Carousel>
             </div>
-            <div className="about-container mt-56 px-4">
+            <div className="about-container mt-1 sm:mt-56 px-4">
            <h1 className='text-center text-4xl mb-6 font-extrabold'>About Us</h1>
             {
                 aboutUsArray.map((item , index) => (
