@@ -7,14 +7,14 @@ const dataArr = [
         title: "Videos",
         pic: "/video.jpg",
         para: "Watch our collection of videos, including documentary-style episodes, interviews, and educational content. Discover the stories and teachings of the Sufi saints who shaped the spiritual landscape of Kashmir.",
-        links: "#"   
+        links: "/video"   
     },
     {
         id: 2,
         title: "Podcast",
         pic: "/pod.jpg",
         para: "Tune into our podcast series where we discuss the lives and teachings of the Awliya Allah (RA), share interviews with scholars, and delve into various aspects of Sufism and Kashmiri heritage.",
-        links: "#"
+        links: "/podcast"
     },
     {
         id: 3 ,
