@@ -1,41 +1,48 @@
-import React, { useState , useEffect} from 'react';
-import { collection, addDoc ,  getDocs} from "firebase/firestore"; 
+import React, { useState, useEffect } from 'react';
+import { collection, addDoc, onSnapshot, doc, deleteDoc } from "firebase/firestore"; 
 import { db, storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
+import ManageVideo from './ManageVideo';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('blogs');
-  const [blogadata, updateBlogdata] = useState({
-    title: '',
-    body: '',
-    photo: ''
-  });
- const[blogs , setBlogs] = useState([])
+  const [blogData, updateBlogData] = useState({ title: '', body: '', photo: '' });
+  const [videoData, setVideoData] = useState({ title: '', photo: '', description: '', link: '' });
+  const [blogs, setBlogs] = useState([]);
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    const getAllblogs = async () => {
-      const querySnapshot = await getDocs(collection(db, "blogs"));
-      const fetchedBlogs = []
-      querySnapshot.forEach((doc) => {
-        fetchedBlogs.push({ id: doc.id, ...doc.data() })
-        // console.log(doc.id, " => ", doc.data());
-      })
-      setBlogs(fetchedBlogs)
-    }
-    getAllblogs()
-  } , [])
+    const unsub = onSnapshot(collection(db, "blogs"), (snapshot) => {
+      let list = [];
+      snapshot.docs.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
+      setBlogs(list);
+    });
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, "videos"), (snapshot) => {
+      let list = [];
+      snapshot.docs.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
+      setVideos(list);
+    });
+    return () => unsub();
+  }, []);
 
 
   const handleChange = (event) => {
     const { id, value } = event.target;
-    updateBlogdata(prevState => ({
-      ...prevState,
-      [id]: value
-    }));
+    updateBlogData(prevState => ({ ...prevState, [id]: value }));
   };
 
-  const handlePhotoChange = async (event) => {
+
+  const handleVideoChange = (event) => {
+    const { id, value } = event.target;
+    setVideoData(prevState => ({ ...prevState, [id]: value }));
+  };
+
+
+  const handlePhotoChange = async (event, type) => {
     const file = event.target.files[0];
     if (file) {
       const name = new Date().getTime() + file.name;
@@ -43,35 +50,39 @@ const AdminDashboard = () => {
       try {
         const snapshot = await uploadBytes(storageRef, file);
         const downloadURL = await getDownloadURL(snapshot.ref);
-        updateBlogdata(prevState => ({
-          ...prevState,
-          photo: downloadURL
-        }));
+        if (type === 'blog') {
+          updateBlogData(prevState => ({ ...prevState, photo: downloadURL }));
+        } else {
+          setVideoData(prevState => ({ ...prevState, photo: downloadURL }));
+        }
       } catch (error) {
         console.error("Upload failed", error);
       }
     }
   };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const newBlog = {
-      title: blogadata.title,
-      body: blogadata.body,
-      photo: blogadata.photo
-    };
-
-    try {
-      await addDoc(collection(db, "blogs"), newBlog);
   
-      updateBlogdata({
-        title: '',
-        body: '',
-        photo: ''
-      });
+
+  const handleSubmit = async (event, type) => {
+    event.preventDefault();
+    try {
+      if (type === 'blog') {
+        await addDoc(collection(db, "blogs"), blogData);
+        updateBlogData({ title: '', body: '', photo: '' });
+      } else {
+        await addDoc(collection(db, "videos"), videoData);
+        setVideoData({ title: '', photo: '', description: '', link: '' });
+      }
     } catch (error) {
-      console.error("Error adding blog", error);
+      console.error("Error adding document", error);
+    }
+  };
+
+  const deleteById = async (id, type) => {
+    try {
+      const ref = doc(db, type === 'blog' ? 'blogs' : 'videos', id);
+      await deleteDoc(ref);
+    } catch (error) {
+      console.error("Error deleting document", error);
     }
   };
 
@@ -91,10 +102,10 @@ const AdminDashboard = () => {
             </li>
             <li>
               <button
-                onClick={() => setActiveTab('faqs')}
-                className={`w-full sm:w-auto px-4 py-2 rounded transition-colors ${activeTab === 'faqs' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+                onClick={() => setActiveTab('videos')}
+                className={`w-full sm:w-auto px-4 py-2 rounded transition-colors ${activeTab === 'videos' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
               >
-                Manage FAQs
+                Manage Videos
               </button>
             </li>
           </ul>
@@ -103,13 +114,13 @@ const AdminDashboard = () => {
         {activeTab === 'blogs' && (
           <div className='max-w-4xl mx-auto bg-white p-6 border rounded shadow-md'>
             <h3 className='text-2xl font-semibold mb-4'>Add New Blog</h3>
-            <form onSubmit={handleSubmit} className='space-y-4'>
+            <form onSubmit={(e) => handleSubmit(e, 'blog')} className='space-y-4'>
               <div>
                 <label className='block text-lg font-medium mb-2' htmlFor='title'>Title:</label>
                 <input
                   id='title'
                   type="text"
-                  value={blogadata.title}
+                  value={blogData.title}
                   onChange={handleChange}
                   required
                   className='w-full p-2 border border-gray-300 rounded'
@@ -120,13 +131,13 @@ const AdminDashboard = () => {
                 <input
                   id='photo'
                   type="file"
-                  onChange={handlePhotoChange}
+                  onChange={(e) => handlePhotoChange(e, 'blog')}
                   className='w-full p-2 border border-gray-300 rounded'
                 />
-                {blogadata.photo && (
+                {blogData.photo && (
                   <div className='mt-4'>
                     <img
-                      src={blogadata.photo}
+                      src={blogData.photo}
                       alt="Preview"
                       className='w-32 h-32 object-cover'
                     />
@@ -137,7 +148,7 @@ const AdminDashboard = () => {
                 <label className='block text-lg font-medium mb-2' htmlFor='body'>Blog Content:</label>
                 <textarea
                   id='body'
-                  value={blogadata.body}
+                  value={blogData.body}
                   onChange={handleChange}
                   required
                   className='w-full p-2 border border-gray-300 rounded'
@@ -152,36 +163,44 @@ const AdminDashboard = () => {
             </form>
           </div>
         )}
-      
 
-        {activeTab === 'faqs' && (
+        {activeTab === 'videos' && (
           <div className='max-w-4xl mx-auto bg-white p-6 border rounded shadow-md'>
-            <h3 className='text-2xl font-semibold mb-4'>Manage FAQs</h3>
-            <p>This section is for managing FAQs. You can add, edit, or delete FAQs here.</p>
+            <h3 className='text-2xl font-semibold mb-4'>Manage Videos</h3>
+            <ManageVideo handleSubmit={handleSubmit} handleVideoChange={handleVideoChange} handlePhotoChange={handlePhotoChange} videoData={videoData} />
           </div>
         )}
       </div>
       <div className='mt-10 py-10 flex flex-col justify-center items-center w-full'>
-     {activeTab === 'blogs' ? <h1 className='text-3xl font-extrabold mb-6'>Blogs</h1> : <h1>FAQ's</h1>}
-      {
-      activeTab === 'blogs' ? (
-      <div className="container-content w-full flex flex-col items-center">
-      {blogs.map((item, index) => (
-      <div className="container flex items-center gap-4 w-full max-w-md border-b py-3 border-gray-300 border shadow-lg" key={index}>
-      <img src={`${item.photo}`} className='h-[80px] w-[80px] object-cover rounded-md ms-4' alt={item.title} />
-      <div className='flex-1 flex justify-between items-center px-2'>
-        <h2 className='text-lg font-semibold ms-5'>{item.title}</h2>
-        <button className='bg-red-500 text-white px-4 py-1 text-sm border rounded-md hover:bg-red-700 transition-colors'>Delete</button>
+        {activeTab === 'blogs' ? <h1 className='text-3xl font-extrabold mb-6'>Blogs</h1> : <h1 className='text-3xl font-extrabold mb-6'>Videos</h1>}
+        {activeTab === 'blogs' ? (
+          <div className="container-content w-full flex flex-col items-center">
+            {blogs.map((item, index) => (
+              <div className="container flex items-center gap-4 w-full max-w-md border-b py-3 border-gray-300 border shadow-lg mb-7" key={index}>
+                <img src={item.photo} className='h-[80px] w-[80px] object-cover rounded-md ms-6 py-1' alt={item.title} />
+                <div className='flex-1 flex justify-between items-center px-5 py-1'>
+                  <h2 className='text-lg font-semibold ms-5'>{item.title}</h2>
+                  <button className='bg-red-500 text-white px-4 py-1 text-sm border rounded-md hover:bg-red-700 transition-colors' onClick={() => deleteById(item.id, 'blog')}>Delete</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="container-content w-full flex flex-col items-center">
+            {videos.map((item, index) => (
+              <div className="container flex items-center gap-4 w-full max-w-md border-b py-3 border-gray-300 border shadow-lg mb-7" key={index}>
+                <img src={item.photo} className='h-[80px] w-[80px] object-cover rounded-md ms-6 py-1' alt={item.title} />
+                <div className='flex-1 flex justify-between items-center px-5 py-1'>
+                  <h2 className='text-lg font-semibold ms-5'>{item.title}</h2>
+                  <button className='bg-red-500 text-white px-4 py-1 text-sm border rounded-md hover:bg-red-700 transition-colors' onClick={() => deleteById(item.id, 'video')}>Delete</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-    </div>
-      ))}
-     </div>
-     )
-     : ""    
-    }
-   </div>
     </section>
   );
-};
+}
 
 export default AdminDashboard;
