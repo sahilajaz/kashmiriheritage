@@ -19,7 +19,7 @@ const Navbar = () => {
       </div>
         <ul className='hidden md:flex me-7 gap-4 text-black font-semibold text-1xl lg:text-[1.3rem] cursor-pointer'>
           <Link to="/blog"><li className='hover:text-blue-400'>Blog</li></Link>
-          <li className='hover:text-blue-400'>Videos</li>
+          <Link to="/video"><li className='hover:text-blue-400'>Videos</li></Link>  
           <Link to="/login"><li className='hover:text-blue-400'>Admin</li></Link>
           <Link to="/about"><li className='hover:text-blue-400'>About Us</li></Link>
           <li className='hover:text-blue-400'>Contact</li>
@@ -34,7 +34,7 @@ const Navbar = () => {
           <Link to="/blog" className='py-1 border-b border-gray-500 w-full' onClick={toggleMenu}>
           <li className='w-full h-full text-center py-1  hover:text-blue-400'>Blog</li>
           </Link>
-          <li className='w-full h-full text-center py-1 border-b border-gray-500 hover:text-blue-400'>Videos</li>
+          <Link to="/video" className='py-1 border-b border-gray-500 w-full text-center' onClick={toggleMenu}><li className='hover:text-blue-400'>Videos</li></Link>
           <Link to="/login" className='py-1 border-b border-gray-500 w-full text-center' onClick={toggleMenu}><li className='hover:text-blue-400'>Admin</li></Link>
           <Link to="/about" className='py-1 border-b border-gray-500 w-full' onClick={toggleMenu}>
           <li className='w-full h-full text-center py-1  hover:text-blue-400'>About Us</li>

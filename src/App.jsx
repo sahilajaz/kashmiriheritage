@@ -10,6 +10,7 @@ import AdminDashboard from "./Components/AdminDashboar";
 import Login from "./Components/Login";
 import { useState } from "react";
 import BlogRead from "./Components/BlogRead";
+import VidesoCompnent from "./Components/VidesoCompnent";
 
 function App() {
   const[showNav , setShowNav] = useState(true)
@@ -35,6 +36,7 @@ function App() {
         <Route path="/about" element={<About/>}/>
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/blogread/:id" element={<BlogRead/>}/>
+        <Route path="/video" element={<VidesoCompnent/>}/>
         <Route path="/login" element={<Login setShowNav={setShowNav}/>}/>
       </Routes>
       {
