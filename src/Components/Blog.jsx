@@ -23,7 +23,7 @@ const Blog = () => {
           <div className="flex flex-col gap-3 max-w-full"> 
             <h1 className='font-extrabold text-sm sm:text-3xl capitalize mb-3'>{blog.title}</h1>
             <p className='text-justify leading-7 font-ubuntu sm:text-1xl'>{blog.para}</p>
-            <Link to="/blogs">
+            <Link to="/blog">
               <button className='bg-black w-32 text-white px-3 py-1 rounded-md font-bold text-xl mt-4 hover:scale-110 transition-transform'>Read more</button>
             </Link>
           </div>

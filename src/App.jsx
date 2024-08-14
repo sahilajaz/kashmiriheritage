@@ -9,6 +9,7 @@ import { Route, Routes } from "react-router-dom";
 import AdminDashboard from "./Components/AdminDashboar";
 import Login from "./Components/Login";
 import { useState } from "react";
+import BlogRead from "./Components/BlogRead";
 
 function App() {
   const[showNav , setShowNav] = useState(true)
@@ -33,6 +34,7 @@ function App() {
         <Route path="/blog" element={<BlogsSection />} />
         <Route path="/about" element={<About/>}/>
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/blogread/:id" element={<BlogRead/>}/>
         <Route path="/login" element={<Login setShowNav={setShowNav}/>}/>
       </Routes>
       {
