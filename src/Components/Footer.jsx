@@ -7,8 +7,9 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <section className="bg-black mt-9  w-auto sm:w-full flex flex-col items-center bg-[url('/footpic.jpg')] relative">
+      <div className='overlay absolute inset-0 bg-black/45 z-10'></div>
     <div className="absolute inset-0 bg-black/20"></div>
-    <div className='footer-container py-10 text-center mt-20 relative'>
+    <div className='footer-container py-10 text-center mt-20 relative z-50'>
       <h1 className='text-white mb-8 tracking-wide text-1xl sm:text-4xl font-extrabold'>KASHMIRI HERITAGE</h1>
       <div className='text-white py-10 flex flex-row justify-center gap-11 sm:gap-32'>
         <ul className='space-y-2 text-justify '>

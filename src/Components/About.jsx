@@ -36,11 +36,11 @@ const aboutUsArray = [
 const About = () => {
     return (
         <section className='mt-2 py-10 mb-20'>
-            <div className="carousel-container w-full h-[900px] px-2 ">
+            <div className="carousel-container w-full h-[900px]">
                 <Carousel>
                     {carouselData.map((item) => (
-                        <div key={item.id} className='w-full h-[900px]'>
-                            <div className="absolute inset-0 bg-black/40"></div>
+                        <div key={item.id} className='w-auto sm:w-full sm:h-[900px]'>
+                            <div className="absolute inset-0 bg-black/30"></div>
                             <img src={item.pic} alt={`Carousel image ${item.id}`} className='w-auto sm:w-full h-[900px]' />
                         </div>
                     ))}
