@@ -3,7 +3,8 @@ import { signInWithEmailAndPassword} from 'firebase/auth';
 import { auth } from '../firebase'; 
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({setShowNav}) => {
+  setShowNav(false)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
@@ -15,6 +16,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        setShowNav(true)
         navigate('/admin');
         
       })

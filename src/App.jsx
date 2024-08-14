@@ -8,11 +8,17 @@ import BottomSection from "./Components/BottomSection";
 import { Route, Routes } from "react-router-dom";
 import AdminDashboard from "./Components/AdminDashboar";
 import Login from "./Components/Login";
+import { useState } from "react";
 
 function App() {
+  const[showNav , setShowNav] = useState(true)
   return (
     <main>
-      <Navbar />
+      {
+        showNav && (
+          <Navbar />
+        )
+      }
       <Routes>
         <Route path="/" element={
           <>
@@ -24,9 +30,13 @@ function App() {
         <Route path="/blogs" element={<BlogsSection />} />
         <Route path="/about" element={<About/>}/>
         <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/login" element={<Login setShowNav={setShowNav}/>}/>
       </Routes>
-      <Footer/>
+      {
+        showNav && (
+          <Footer/>
+        )
+      }
     </main>
   );
 }
