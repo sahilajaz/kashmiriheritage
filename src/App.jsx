@@ -12,6 +12,9 @@ import { useState } from "react";
 
 function App() {
   const[showNav , setShowNav] = useState(true)
+   
+ 
+
   return (
     <main>
       {
@@ -27,7 +30,7 @@ function App() {
             <BottomSection/> 
           </>
         } />
-        <Route path="/blogs" element={<BlogsSection />} />
+        <Route path="/blog" element={<BlogsSection />} />
         <Route path="/about" element={<About/>}/>
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/login" element={<Login setShowNav={setShowNav}/>}/>

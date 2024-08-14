@@ -31,14 +31,16 @@ const Navbar = () => {
       </div>
       {isMenuOpen && (
         <ul className='bg-white text-black font-ubuntu text-xl cursor-pointer absolute top-[69px] left-0 right-0 py-1 flex flex-col items-center gap-4 z-50'>
-          <li className='w-full h-full text-center py-1 border-b border-gray-500 hover:text-blue-400'>Blog</li>
+          <Link to="/blog" className='py-1 border-b border-gray-500 w-full' onClick={toggleMenu}>
+          <li className='w-full h-full text-center py-1  hover:text-blue-400'>Blog</li>
+          </Link>
           <li className='w-full h-full text-center py-1 border-b border-gray-500 hover:text-blue-400'>Videos</li>
-          <li className='w-full h-full text-center py-1 border-b border-gray-500 hover:text-blue-400'>FAQ</li>
+          <Link to="/login" className='py-1 border-b border-gray-500 w-full text-center' onClick={toggleMenu}><li className='hover:text-blue-400'>Admin</li></Link>
           <Link to="/about" className='py-1 border-b border-gray-500 w-full' onClick={toggleMenu}>
           <li className='w-full h-full text-center py-1  hover:text-blue-400'>About Us</li>
           </Link>
           <li className='w-full h-full text-center py-1 border-b border-gray-500 hover:text-blue-400'>Contact</li>
-          <li className='w-full h-full text-center py-1 hover:text-blue-400'>Podcast</li>
+          <li className='w-full h-full text-center py-1 border-b border-gray-500 hover:text-blue-400'>Podcast</li>
         </ul>
       )}
     </nav>
