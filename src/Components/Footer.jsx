@@ -27,7 +27,9 @@ const Footer = () => {
         <Link to="/video">
           <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>Videos</li>
           </Link>
+        <Link to="/contact">
           <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>Contact Us</li>
+          </Link>
           <li className='cursor-pointer hover:text-green-300 text-sm sm:text-2xl font-bold'>
             <a href="https://x.com/HeritageIs50684?t=YTTC1ouf1sL0sDfQuar48Q&s=09" target='blank'>Twitter</a>
           </li>
