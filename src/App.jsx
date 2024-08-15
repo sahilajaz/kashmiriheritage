@@ -26,6 +26,7 @@ function App() {
           <Navbar />
         )
       }
+      
       <Routes>
         <Route path="/" element={
           <>

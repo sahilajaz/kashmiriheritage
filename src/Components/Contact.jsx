@@ -14,7 +14,6 @@ const Contact = () => {
 
     emailjs.sendForm('service_iivn1gz', 'template_frulqhz', form.current, 'ud7Fl2P9ycg_sEPiR')
       .then((result) => {
-          console.log('Email sent successfully:', result.text);
           setAlertMessage('Email sent successfully!');
           setAlertSeverity('success');
           setAlertOpen(true);
