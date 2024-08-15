@@ -5,7 +5,7 @@ const Hero = () => {
     <section className='relative mt-[0.2px]'>
         <div className="bg-[url('/1.jpg')] bg-center bg-cover flex justify-center items-center sm:h-[660px] relative top-[64px]">
           <div className="absolute inset-0 bg-black/55 z-10"></div>
-          <div className="relative text-center z-20 px-6 md:px-12 lg:px-24">
+          <div className="relative text-center z-20 px-6 md:px-12 lg:px-24 py-10 sm:py-0">
             <h1 className='text-white text-1xl sm:text-3xl md:text-4xl lg:text-5xl mt-9 font-semibold mb-4 md:mb-6 leading-tight drop-shadow-lg'>
               Welcome to Kashmiri Heritage
             </h1>
