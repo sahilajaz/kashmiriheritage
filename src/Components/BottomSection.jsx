@@ -29,7 +29,7 @@ const BottomSection = () => {
   return (
     <section className='mt-10'>
     <h1 className='text-center text-2xl sm:text-4xl font-extrabold py-4'>More About Us</h1>
-    <div className="card-container  mt-6 mb-16 px-4 lg:px-16 md:max-w-[1200px]  ms-0 md:ms-32 ">
+    <div className="card-container  mt-6 mb-16 px-4 lg:px-16 md:max-w-[1200px]  ms-0 md:mx-auto ">
         {
             dataArr.map((item, index) => (
                 <div className="card flex flex-col md:flex-row gap-5 px-4 py-4 border shadow-lg cursor-pointer hover:none sm:hover:translate-x-11 transition-transform md:px-5 md:py-4 mb-3" key={index}>

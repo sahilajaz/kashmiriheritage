@@ -2,7 +2,7 @@ import {useState , useEffect} from 'react'
 import { collection, getDocs } from "firebase/firestore";
 import {db} from '../firebase'
 
-const VidesoCompnent = () => {
+const VideoCompnent = () => {
 const[videoData , setVideoData] = useState([])
 
 useEffect(() => {
@@ -59,4 +59,4 @@ useEffect(() => {
   )
 }
 
-export default VidesoCompnent
+export default VideoCompnent
