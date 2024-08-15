@@ -37,7 +37,7 @@ const Contact = () => {
           <h1 className='text-center text-sm sm:text-4xl font-extrabold text-white'>Contact Us</h1>
           <p className='text-center text-sm sm:text-1xl mt-3 text-white'>Questions, feedback—we're here for it all</p>
         </div>
-        <div className="contact-card absolute lg:top-[500px] sm:top-[400px] top-[300px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-full lg:max-w-[800px] max-w-[500px] px-4 sm:px-6 md:px-8">
+        <div className="contact-card absolute xl:top-[530px] lg:top-[500px] sm:top-[400px] top-[300px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-full lg:max-w-[800px] max-w-[500px] px-4 sm:px-6 md:px-8">
           <form className='flex flex-col gap-6 bg-white p-6 sm:p-8 rounded-lg shadow-lg' ref={form} onSubmit={sendEmail}>
             <div>
               <label className="block" htmlFor="name">Your name:</label>

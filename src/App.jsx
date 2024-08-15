@@ -1,6 +1,6 @@
 import {  useContext } from 'react';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom'; 
-import { AuthProvider, AuthContext } from './AuthContext'; 
+import {  AuthContext } from './AuthContext'; 
 import Navbar from './Components/Navbar';
 import Hero from './Components/Hero';
 import BlogsSection from './Components/BlogsSection';
@@ -25,7 +25,6 @@ function App() {
    
       <main>
         {location.pathname != '/login' && <Navbar />}
-        <AuthProvider>
         <Routes>
           <Route path="/" element={
             <>
@@ -47,7 +46,6 @@ function App() {
           />
            <Route path="*" element={<></>} />
         </Routes>
-        </AuthProvider>
         {location.pathname !== '/login' && <Footer />}
       </main>
   );
