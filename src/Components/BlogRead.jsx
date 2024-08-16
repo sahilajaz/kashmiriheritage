@@ -31,7 +31,7 @@ const BlogRead = () => {
 
   return (
     <section className='mt-32 mb-16'>
-  <div className='w-full '>
+  <div className='w-full'>
     {post.length > 0 ? (
       post.map((postItem, index) => (
         <div key={index} className=''>
@@ -43,7 +43,15 @@ const BlogRead = () => {
             className='h-[60vh] sm:h-[800px] w-[800px]'
           />
           </div>
-          <p className='px-4 sm:px-20 text-justify font-ubuntu leading-6 sm:leading-9  sm:tracking-wide'>{postItem.data.body}</p>
+          <p className='px-4 sm:px-20 text-justify font-ubuntu leading-6 sm:leading-9  sm:tracking-wide'>
+            {/* {postItem.data.body} */}
+            <p
+            dangerouslySetInnerHTML={
+              { __html: postItem.data.body }
+            }
+            />
+            
+            </p>
         </div>
       ))
     ) : (

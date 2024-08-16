@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect  , useRef} from 'react';
 import { collection, addDoc, onSnapshot, doc, deleteDoc , getDoc} from "firebase/firestore"; 
 import { db, storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL , deleteObject } from "firebase/storage";
 import ManageVideo from './ManageVideo';
+import JoditEditor from 'jodit-react'
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('blogs');
@@ -10,6 +11,7 @@ const AdminDashboard = () => {
   const [videoData, setVideoData] = useState({ title: '', photo: '', description: '', link: '' });
   const [blogs, setBlogs] = useState([]);
   const [videos, setVideos] = useState([]);
+  const editorRef = useRef(null)
 
   useEffect(() => {
     const unsub = onSnapshot(collection(db, "blogs"), (snapshot) => {
@@ -35,6 +37,14 @@ const AdminDashboard = () => {
     updateBlogData(prevState => ({ ...prevState, [id]: value }));
   };
 
+
+  const handleEditorChange = (newValue) => {
+     console.log(newValue)
+    updateBlogData(prev => ({
+      ...prev,
+      body: newValue
+    }));
+  };
 
   const handleVideoChange = (event) => {
     const { id, value } = event.target;
@@ -96,6 +106,8 @@ const AdminDashboard = () => {
       console.error("Error deleting document or photo", error);
     }
   };
+
+ 
   
   
 
@@ -159,13 +171,19 @@ const AdminDashboard = () => {
               </div>
               <div>
                 <label className='block text-lg font-medium mb-2' htmlFor='body'>Blog Content:</label>
-                <textarea
+                {/* <textarea
                   id='body'
                   value={blogData.body}
                   onChange={handleChange}
                   required
                   className='w-full p-2 border border-gray-300 rounded'
-                />
+                /> */}
+                   <JoditEditor
+                   ref={editorRef}
+                   value={blogData.body}
+                   onChange={handleEditorChange}
+                   />
+                 
               </div>
               <button
                 type="submit"

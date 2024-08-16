@@ -42,10 +42,10 @@ const BlogsSection = () => {
         <h1 className='text-4xl text-center mb-16 font-extrabold'>Our Blogs</h1>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16 md:ms-64 ms-0'>
        {data.map((blog, index) => (
-      <div key={index} className='flex justify-center   hover:-translate-y-4 transition-transform duration-75'>
+      <div key={index} className='flex w-80 h-80 justify-center   hover:-translate-y-4 transition-transform duration-75'>
         <div className='border shadow-lg flex flex-col items-center px-3 py-4'>
-          <img src={`${blog.data.photo}`} className='w-[200px] h-[200px] py-5' />
-          <h1 className='font-bold text-sm text-center py-4'>{blog.data.title}</h1>
+          <img src={`${blog.data.photo}`} className='w-[200px] h-[200px] py-5 px-4' />
+          <h1 className='font-extrabold text-sm sm:text-[1.2rem] text-center py-4 px-5'>{blog.data.title}</h1>
           <button className='px-3 py-1 bg-blue-500 text-white border rounded-lg hover:bg-slate-500'
           onClick={()=>handleClick(blog.id)}
           >Read more</button>
